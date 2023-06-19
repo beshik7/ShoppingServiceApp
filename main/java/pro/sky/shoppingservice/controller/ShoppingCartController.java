@@ -10,3 +10,20 @@ import java.util.List;
 @RestController
 @RequestMapping("/store/order")
 public class ShoppingCartController {
+
+    private final ShoppingCartService shoppingCartService;
+    @Autowired
+    public ShoppingCartController(ShoppingCartService shoppingCartService) {
+        this.shoppingCartService = shoppingCartService;
+    }
+
+    @PostMapping("/add")
+    public void addItem(@RequestBody Item item) {
+        shoppingCartService.addItem(item);
+    }
+
+    @GetMapping("get")
+    public List<Item> getItems() {
+        return shoppingCartService.getItems();
+    }
+}
