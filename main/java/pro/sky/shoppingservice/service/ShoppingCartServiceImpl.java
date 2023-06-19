@@ -13,8 +13,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     private List<Item>  items = new ArrayList<>();
 
     @Override
-    public void addItem(Item item) {
-        items.add(item);
+    public void addItems(List<Item> itemsToAdd) {
+        items.addAll(itemsToAdd);
     }
 
     @Override

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import pro.sky.shoppingservice.Item;
 import pro.sky.shoppingservice.service.ShoppingCartService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,8 +19,12 @@ public class ShoppingCartController {
     }
 
     @PostMapping("/add")
-    public void addItem(@RequestBody Item item) {
-        shoppingCartService.addItem(item);
+    public void addItems(@RequestParam List<Integer> ids) {
+        List<Item> itemsToAdd = new ArrayList<>();
+        for (Integer id : ids) {
+            itemsToAdd.add(new Item(id));
+            shoppingCartService.addItems(itemsToAdd);
+        }
     }
 
     @GetMapping("get")
