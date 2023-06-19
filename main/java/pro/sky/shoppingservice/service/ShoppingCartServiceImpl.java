@@ -10,4 +10,15 @@ import java.util.List;
 @Service
 @SessionScope
 public class ShoppingCartServiceImpl implements ShoppingCartService {
+    private List<Item>  items = new ArrayList<>();
+
+    @Override
+    public void addItems(List<Item> itemsToAdd) {
+        items.addAll(itemsToAdd);
+    }
+
+    @Override
+    public List<Item> getItems() {
+        return items;
+    }
 }
